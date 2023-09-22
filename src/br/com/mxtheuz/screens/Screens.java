@@ -76,8 +76,12 @@ public class Screens {
         System.out.println();
 
         for (Buy buy : this.person.getPurchases()) {
-
+            System.out.println("-");
+            System.out.println(buy.description);
+            System.out.println("Valor: R$ " + buy.value);
+            System.out.println("Registrado em " + buy.date);
         }
+        this.options();
     }
 
     private void processChoose(int choose) {
@@ -86,9 +90,11 @@ public class Screens {
                 this.dashboard();
                 break;
             case 2:
+                this.registerPurchase();
                 break;
 
             case 3:
+                this.getExtract();
                 break;
 
             default:
