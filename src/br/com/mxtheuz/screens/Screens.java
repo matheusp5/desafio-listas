@@ -1,5 +1,6 @@
 package br.com.mxtheuz.screens;
 
+import br.com.mxtheuz.models.Buy;
 import br.com.mxtheuz.models.Person;
 
 import java.util.Scanner;
@@ -24,6 +25,7 @@ public class Screens {
 
     public void options() {
         System.out.println();
+        System.out.println("Olá, " + this.person.getName());
         System.out.println("O que você deseja fazer? ");
         System.out.println("1- Consultar conta");
         System.out.println("2- Registrar compra");
@@ -31,7 +33,51 @@ public class Screens {
         System.out.println();
         System.out.print("Sua escolha: ");
         int choose = scanner.nextInt();
+        this.processChoose(choose);
+    }
 
+    public void registerPurchase() {
+        System.out.println();
+        System.out.println("Ok! Você deseja fazer uma nova compra, saiba que você tem R$ " + this.person.getRestInCardLimit() + " sobrando.");
+        System.out.println();
+        System.out.print("Qual é a descrição da compra? ");
+        String description = scanner.next();
+
+        System.out.print("Qual é o valor da compra? ");
+        double total = scanner.nextDouble();
+
+        if(this.person.getTotalFromPurchases() >= total) {
+            System.out.println();
+            System.out.println("Resumo: ");
+            System.out.println("Descrição: " + description);
+            System.out.println("Total: " + total);
+            System.out.println("Valor restante após a compra: R$ " + (this.person.getTotalFromPurchases() - total));
+            System.out.print("Deseja prosseguir? (S/N) ");
+            String choose = (this.scanner.next()).toLowerCase();
+            if(choose == "s") {
+                this.person.createPayment(description, total);
+                System.out.println("Compra efetuada com sucesso.");
+                this.options();
+            } else if (choose == "n") {
+                System.out.println("Ok!");
+                this.options();
+            } else {
+                this.registerPurchase();
+            }
+        } else {
+            System.out.println("Você não tem limite suficiente.");
+            this.registerPurchase();
+        }
+    }
+
+    public void getExtract() {
+        System.out.println();
+        System.out.println("Confira o seu extrato");
+        System.out.println();
+
+        for (Buy buy : this.person.getPurchases()) {
+
+        }
     }
 
     private void processChoose(int choose) {
