@@ -98,6 +98,8 @@ public class Screens {
                 break;
 
             default:
+                System.out.println("Opção inválida!");
+                this.options();
                 break;
 
         }
