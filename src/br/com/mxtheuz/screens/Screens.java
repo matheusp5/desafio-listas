@@ -20,4 +20,12 @@ public class Screens {
 
         System.out.println();
     }
+
+    public void Dashboard() {
+        System.out.println();
+        System.out.println("***********************************");
+        System.out.println("Nome:             " + name);
+        System.out.println("Limite do cartão: " + cardLimit);
+        System.out.println("***********************************");
+    }
 }
