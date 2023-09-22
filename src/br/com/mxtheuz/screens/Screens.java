@@ -27,7 +27,8 @@ public class Screens {
         System.out.println();
         System.out.println("***********************************");
         System.out.println("Nome:             " + this.person.getName());
-        System.out.println("Limite do cartão: " + this.person.get);
+        System.out.println("Limite do cartão: " + this.person.getCardLimit() + "(" + this.person.getRestInCardLimit() + " restante)");
+        System.out.println("Total em compras: " + this.person.getTotalFromPurchases() + "(" +this.person.getPurchases().size() + " compras)" );
         System.out.println("***********************************");
     }
 }
