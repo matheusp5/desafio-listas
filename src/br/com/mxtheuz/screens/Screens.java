@@ -10,7 +10,7 @@ public class Screens {
     private final Scanner scanner = new Scanner(System.in);
 
 
-    public void InitScreen() {
+    public void initScreen() {
         System.out.println();
         System.out.println("Olá! Seja bem-vindo.");
         System.out.print("Para começar, insira o seu nome: ");
@@ -20,10 +20,38 @@ public class Screens {
         double personCardLimit = scanner.nextDouble();
 
         this.person = new Person(personName, personCardLimit);
-        System.out.println();
     }
 
-    public void Dashboard() {
+    public void options() {
+        System.out.println();
+        System.out.println("O que você deseja fazer? ");
+        System.out.println("1- Consultar conta");
+        System.out.println("2- Registrar compra");
+        System.out.println("3- Conferir extrato");
+        System.out.println();
+        System.out.print("Sua escolha: ");
+        int choose = scanner.nextInt();
+
+    }
+
+    private void processChoose(int choose) {
+        switch (choose) {
+            case 1:
+                this.dashboard();
+                break;
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            default:
+                break;
+
+        }
+    }
+
+    public void dashboard() {
         System.out.println();
         System.out.println("***********************************");
         System.out.println("Nome:             " + this.person.getName());
