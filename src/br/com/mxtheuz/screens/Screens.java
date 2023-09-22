@@ -1,11 +1,12 @@
 package br.com.mxtheuz.screens;
 
+import br.com.mxtheuz.models.Person;
+
 import java.util.Scanner;
 
 public class Screens {
 
-    private double cardLimit = 0;
-    private String name = "";
+    private Person person;
     private final Scanner scanner = new Scanner(System.in);
 
 
@@ -13,19 +14,20 @@ public class Screens {
         System.out.println();
         System.out.println("Olá! Seja bem-vindo.");
         System.out.print("Para começar, insira o seu nome: ");
-        this.name = scanner.next();
+        String personName = scanner.next();
 
-        System.out.println("Ótimo, " + name + "! e agora, qual é o limite do seu cartão? ");
-        this.cardLimit = scanner.nextDouble();
+        System.out.println("Ótimo, " + personName + "! e agora, qual é o limite do seu cartão? ");
+        double personCardLimit = scanner.nextDouble();
 
+        this.person = new Person(personName, personCardLimit);
         System.out.println();
     }
 
     public void Dashboard() {
         System.out.println();
         System.out.println("***********************************");
-        System.out.println("Nome:             " + name);
-        System.out.println("Limite do cartão: " + cardLimit);
+        System.out.println("Nome:             " + this.person.getName());
+        System.out.println("Limite do cartão: " + this.person.get);
         System.out.println("***********************************");
     }
 }
