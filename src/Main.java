@@ -5,7 +5,7 @@ public class Main {
         Screens screens = new Screens();
         screens.initScreen();
         while (true) {
-            screens.options();
+            if(!screens.options()) break;
         }
     }
 }
